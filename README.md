@@ -3,7 +3,7 @@
 
 Run
 ```
-git clone https://github.com/Trabbit0ne/BazzarFlip.git && cd BazzarFlip && chmod +x * && apt install bc
+git clone https://github.com/Trabbit0ne/BazzarFlip.git && cd BazzarFlip && chmod +x * && apt install bc jq parallel
 ```
 Then
 ```
