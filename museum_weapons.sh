@@ -54,7 +54,7 @@ fetch_info() {
 export -f fetch_info
 
 # Use parallel to fetch prices and XP for all items concurrently
-echo "$item_tags" | tr ' ' '\n' | parallel -j 8 fetch_info | tee temp_list.txt
+echo "$item_tags" | tr ' ' '\n' | parallel -j 1 fetch_info | tee temp_list.txt
 
 # Sort and display the results
 clear
