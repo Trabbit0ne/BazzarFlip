@@ -4,6 +4,7 @@
 clear
 
 # VARIABLES
+version="1.0"
 
 # Colors
 RED="\e[31m"        # Classic RED
@@ -31,9 +32,10 @@ print_header() {
 
 print_menu() {
     echo
-    echo -e "    [${YELLOW}1${NE}] - Museum Weapons Datas"
-    echo -e "    [${YELLOW}2${NE}] - Bazaar Items Datas"
-    echo -e "    [${YELLOW}3${NE}] - Exit Menu"
+    echo -e "    (${YELLOW}1${NE}) - Museum Weapons Datas"
+    echo -e "    (${YELLOW}2${NE}) - Museum Armors  Datas"
+    echo -e "    (${YELLOW}3${NE}) - Bazaar Items Datas"
+    echo -e "    (${YELLOW}Q${NE}) - Exit Menu"
     echo
     echo -e "{+}=============================================={+}"
 }
@@ -44,20 +46,31 @@ MENU() {
         print_header
         print_menu
         echo
-        local prompt=$(echo -e "${CYAN}[${RED}Xavier${YELLOW}@${GREEN}Minecraft]~${CYAN}#${NE} ")
-        read -p "$prompt" input
+
+        prompt="╭─[${GREEN} V${version}${NE}] ─ (${RED} Select A Tool ${NE})\n╰─${YELLOW}# ${NE}"
+        echo -ne "$prompt"
+        read -r input
+
         case $input in
             1)
+                clear
                 bash museum_weapons.sh
                 read -p "Press Enter To Continue..."
                 ;;
             2)
-                bash bazzar.sh
+                clear
+                bash museum_armors.sh
                 read -p "Press Enter To Continue..."
                 ;;
             3)
+                clear
+                bash bazzar.sh
+                read -p "Press Enter To Continue..."
+                ;;
+            [qQ])
+               clear
                 echo -e "${BOLD}${GREEN}Exiting the menu. Goodbye!${NE}"
-                break
+                exit 0
                 ;;
             *)
                 echo -e "${BOLD}${RED}ERROR:${NE} Invalid Choice! Please try again."
